@@ -1,0 +1,33 @@
+.all {
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: rgb(87, 73, 209);
+}
+.commonCard {
+  background-color: #d8f3f5;
+  border-radius: 0px 10px 10px 0px;
+  height: 85%;
+  width: 50%;
+  overflow: auto;
+  transform: translate(88.8%, -93.3%);
+}
+.imageback {
+  background-color: aliceblue;
+  height: 85.3%;
+  width: 40%;
+  border-radius: 10px 0px 0px 10px;
+  /* overflow: auto; */
+  transform: translate(11.5%, 7%);
+}
+
+.component {
+  overflow: hidden;
+}
+img {
+  width: 550px;
+  border-radius: 10px;
+  height: 530px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
