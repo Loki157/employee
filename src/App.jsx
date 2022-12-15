@@ -19,7 +19,7 @@ import login from "./assets/login.jpg";
 //   },
 // });
 function App() {
-  const [addCard2, setAddCard2] = React.useState([]);
+  const [addCard2, setAddCard2] = React.useState(false);
   const [getFormik, setGetFormik] = React.useState([]);
   function addComponent() {
     setAddCard2([...addCard2, "Adding"]);
