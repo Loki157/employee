@@ -125,9 +125,7 @@ function CardTitle2({ formik, addCard2, addComponent }) {
                   justifyContent: "space-around",
                 }}
               ></Box>
-              {addCard2.map((items) => (
-                <Card2 text={items} formik={formik} />
-              ))}
+              {addCard2?<Card2 formik={formik} /> :null}
 
               <Box
                 display="flex"
