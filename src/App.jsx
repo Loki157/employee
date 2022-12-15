@@ -59,8 +59,9 @@ function App() {
     }),
     onSubmit: (values) => {
       console.log("value", values);
-      formik.handleReset();
+     // formik.handleReset();
       getFormikValues(values);
+      setAddCard2(true)
     },
   });
   function getFormikValues(item) {
