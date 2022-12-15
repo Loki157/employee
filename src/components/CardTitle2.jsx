@@ -15,11 +15,14 @@ import {
   Fab,
 } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
-
+import ClearIcon from "@mui/icons-material/Clear";
+import Card2Table from "./Card2Table";
 import AddIcon from "@mui/icons-material/Add";
 import Scrollbars from "react-custom-scrollbars/lib/Scrollbars";
 import RefreshIcon from "@mui/icons-material/Refresh";
-const Card2 = ({ formik }) => {
+import Card2List from "./Card2List";
+
+const Card2 = ({ formik, removeInput }) => {
   return (
     <>
       <Box display="flex" flexDirection="row">
@@ -50,7 +53,7 @@ const Card2 = ({ formik }) => {
             </Typography>
           ) : null}
         </FormControl>
-        <FormControl sx={{ width: 150 }}>
+        <FormControl sx={{ width: 150, paddingLeft: 1 }}>
           <InputLabel id="demo-simple-select-label" sx={{ fontWeight: "bold" }}>
             Course
           </InputLabel>
@@ -75,11 +78,11 @@ const Card2 = ({ formik }) => {
             </Typography>
           ) : null}
         </FormControl>
-        <FormControl sx={{ width: 100 }}>
+        <FormControl sx={{ width: 200, paddingLeft: 1 }}>
           <TextField
             type="number"
             name="percentage"
-            placeholder="Enter percentage (%)"
+            placeholder="percentage (%)"
             variant="standard"
             value={formik.values.percentage}
             onChange={formik.handleChange}
@@ -89,34 +92,81 @@ const Card2 = ({ formik }) => {
             <Typography variant="p" sx={{ color: "crimson", fontSize: "15px" }}>
               {formik.errors.percentage}
             </Typography>
-          ) : null}
+          ) : (
+            false
+          )}
         </FormControl>
       </Box>
     </>
   );
 };
-function CardTitle2({ formik, addCard2, addComponent }) {
+function CardTitle2({
+  formik,
+  addCard2,
+  addComponent,
+  removeInput,
+  getFormik,
+  removeTableRow,
+}) {
+  const [displayClearButton, setDisplayClearButton] = React.useState(false);
   return (
     <form onSubmit={formik.handleSubmit}>
       <Box>
         <Container fixed>
-          <Card sx={{ padding: 3, my: 2, height: 300, overflow: "auto" }}>
+          <Card sx={{ padding: 2, my: 2, height: 300, overflow: "auto" }}>
             <Scrollbars>
-              <h2>Education Details</h2>
+              <Grid container sx={{ padding: 0 }}>
+                <Grid item sm={10}>
+                  <Typography variant="h5">Education Details</Typography>
+                </Grid>
+                <Grid
+                  item
+                  sm={1}
 
-              <Button
-                variant="contained"
-                size="small"
-                sx={{
-                  "&:hover": { backgroundColor: "#471597" },
-                  backgroundColor: "#6727cc",
-                  color: "white",
-                }}
-                onClick={addComponent}
-              >
-                <AddIcon />
-                Add{" "}
-              </Button>
+                  //sx={{ float: "right" }}
+                >
+                  <Tooltip title="Add" arrow placement="left">
+                    <Fab
+                      size="small"
+                      sx={{
+                        "&:hover": { backgroundColor: "#471597" },
+                        backgroundColor: "#6727cc",
+                        color: "white",
+                      }}
+                      onClick={() => {
+                        addComponent();
+                        setDisplayClearButton(true);
+                      }}
+                    >
+                      <AddIcon />
+                    </Fab>
+                  </Tooltip>
+                </Grid>
+
+                <Grid item sm={0.5}>
+                  {displayClearButton ? (
+                    <FormControl sx={{ paddingLeft: 1 }}>
+                      <Tooltip title="Clear" arrow placement="right">
+                        <Fab
+                          onClick={() => {
+                            removeInput();
+                            setDisplayClearButton(false);
+                          }}
+                          size="small"
+                          sx={{
+                            backgroundColor: "#6727cc",
+                            color: "white",
+                            "&:hover": { backgroundColor: "#471597" },
+                            //textAlign: "center",
+                          }}
+                        >
+                          <ClearIcon />
+                        </Fab>
+                      </Tooltip>
+                    </FormControl>
+                  ) : null}
+                </Grid>
+              </Grid>
               <Box
                 sx={{
                   my: 2,
@@ -125,7 +175,9 @@ function CardTitle2({ formik, addCard2, addComponent }) {
                   justifyContent: "space-around",
                 }}
               ></Box>
-              {addCard2?<Card2 formik={formik} /> :null}
+              {addCard2 ? (
+                <Card2 formik={formik} removeInput={removeInput} />
+              ) : null}
 
               <Box
                 display="flex"
@@ -151,7 +203,7 @@ function CardTitle2({ formik, addCard2, addComponent }) {
                 >
                   Submit
                 </Button>
-                <Tooltip title="Reset">
+                <Tooltip title="Reset" arrow placement="right">
                   <Fab
                     sx={{
                       my: 2,
@@ -160,11 +212,21 @@ function CardTitle2({ formik, addCard2, addComponent }) {
                       color: "white",
                     }}
                     size="small"
-                    onClick={formik.handleReset}
+                    onClick={removeInput}
                   >
                     <RefreshIcon />
                   </Fab>
                 </Tooltip>
+              </Box>
+              <Box>
+                <Card2List
+                  getFormik={getFormik}
+                  removeTableRow={removeTableRow}
+                />
+                {/* <Card2Table
+                  getFormik={getFormik}
+                  removeTableRow={removeTableRow}
+                /> */}
               </Box>
             </Scrollbars>
           </Card>

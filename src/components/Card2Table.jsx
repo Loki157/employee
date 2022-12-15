@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-function Card2Table({ getFormik }) {
+function Card2Table({ getFormik, removeTableRow }) {
   return (
     <>
       <TableContainer>
@@ -30,7 +30,16 @@ function Card2Table({ getFormik }) {
                 <TableCell>{item.Course} </TableCell>
                 <TableCell>{item.percentage}%</TableCell>
                 <TableCell>
-                  <Fab size="small" onClick={() => {}}>
+                  <Fab
+                    sx={{
+                      backgroundColor: "#6727cc",
+                      color: "#f2f2f2",
+                      "&:hover": { backgroundColor: "#471597" },
+                      //textAlign: "center",
+                    }}
+                    size="small"
+                    onClick={removeTableRow}
+                  >
                     <DeleteIcon />
                   </Fab>
                 </TableCell>

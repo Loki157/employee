@@ -22,7 +22,16 @@ function App() {
   const [addCard2, setAddCard2] = React.useState(false);
   const [getFormik, setGetFormik] = React.useState([]);
   function addComponent() {
-    setAddCard2([...addCard2, "Adding"]);
+    setAddCard2(true);
+  }
+  function removeInput() {
+    //formik.handleReset();
+    setAddCard2(false);
+  }
+  function removeTableRow(index) {
+    const passData = getFormik;
+    passData.splice(index, 1);
+    setGetFormik([...passData]);
   }
   const formik = useFormik({
     initialValues: {
@@ -59,11 +68,12 @@ function App() {
     }),
     onSubmit: (values) => {
       console.log("value", values);
-     // formik.handleReset();
+      formik.handleReset();
+      setAddCard2(false);
       getFormikValues(values);
-      setAddCard2(true)
     },
   });
+
   function getFormikValues(item) {
     setGetFormik([...getFormik, item]);
   }
@@ -85,9 +95,11 @@ function App() {
                 <CardTitle2
                   formik={formik}
                   addCard2={addCard2}
+                  removeInput={removeInput}
                   addComponent={addComponent}
+                  getFormik={getFormik}
+                  removeTableRow={removeTableRow}
                 />
-                <Card2Table getFormik={getFormik} />
               </Box>
             </div>
           </Scrollbars>

@@ -8,7 +8,59 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+@font-face {
+  font-family: "Gilroy Semibold";
+  src: local("Gilroy Semibold"), local("Gilroy-Semibold"),
+    url("./Font/Gilroy-Semibold.woff2") format("woff2"),
+    url("./Font/Gilroy-Semibold.woff") format("woff"),
+    url("./Font/Gilroy-Semibold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Gilroy Light";
+  src: url("./Font/Gilroy-Light.eot");
+  src: local("Gilroy Light"), local("Gilroy-Light"),
+    url("./Font/Gilroy-Light.eot?#iefix") format("embedded-opentype"),
+    url("./Font/Gilroy-Light.woff2") format("woff2"),
+    url("./Font/Gilroy-Light.woff") format("woff"),
+    url("./Font/Gilroy-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Gilroy Medium";
+  src: url("./Font/Gilroy-Medium.eot");
+  src: local("Gilroy Medium"), local("Gilroy-Medium"),
+    url("./Font/Gilroy-Medium.eot?#iefix") format("embedded-opentype"),
+    url("./Font/Gilroy-Medium.woff2") format("woff2"),
+    url("./Font/Gilroy-Medium.woff") format("woff"),
+    url("./Font/Gilroy-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Gilroy Thin";
+  src: url("Gilroy-Thin.eot");
+  src: local("Gilroy Thin"), local("Gilroy-Thin"),
+    url("./Font/Gilroy-Thin.eot?#iefix") format("embedded-opentype"),
+    url("./Font/Gilroy-Thin.woff2") format("woff2"),
+    url("./Font/Gilroy-Thin.woff") format("woff"),
+    url("./Font/Gilroy-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Gilroy Heavy";
+  src: url("./Font/Gilroy-Heavy.eot");
+  src: local("Gilroy Heavy"), local("Gilroy-Heavy"),
+    url("./Font/Gilroy-Heavy.eot?#iefix") format("embedded-opentype"),
+    url("./Font/Gilroy-Heavy.woff2") format("woff2"),
+    url("./Font/Gilroy-Heavy.woff") format("woff"),
+    url("./Font/Gilroy-Heavy.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

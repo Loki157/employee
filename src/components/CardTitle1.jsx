@@ -18,7 +18,7 @@ import {
 } from "@mui/material";
 import * as yup from "yup";
 import { useFormik } from "formik";
-
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import "../Styles/CardTitle1.css";
 import { Box } from "@mui/system";
 
@@ -26,23 +26,52 @@ function CardTitle1({ formik }) {
   return (
     <>
       <Container fixed>
-        <h2>Employee Register</h2>
         <Box display="flex" flexDirection="column">
           <Card
             sx={{
+              my: 2,
               height: "400px",
+              //backgroundColor: "#f2f2f2",
               //backgroundColor: "#afcb64",
             }}
           >
+            <p
+              style={{
+                margin: 0,
+                padding: "10px",
+                textAlign: "center",
+                color: "#6727cc",
+                fontFamily: "Gilroy Medium",
+                // backgroundColor: "#fe0073",
+                fontSize: "25px",
+              }}
+            >
+              Employee Register
+            </p>
+            <Grid item md={12}>
+              <Typography
+                variant="h5"
+                sx={{
+                  padding: 0,
+                  fontFamily: "Gilroy Light",
+                  fontWeight: "bold",
+                }}
+              >
+                Personal Details
+              </Typography>
+            </Grid>
             <Container fixed>
               <Grid container>
-                <Grid item md={12}>
-                  <h2 style={{ color: "#6727cc" }}>Personal Details</h2>
-                </Grid>
                 <Grid container md={12}>
                   <Grid item md={6} sx={{ my: 2 }}>
                     <FormControl>
-                      <FormLabel id="Firstname" sx={{ fontWeight: "bold" }}>
+                      <FormLabel
+                        id="Firstname"
+                        sx={{
+                          fontFamily: "Gilroy ",
+                          fontWeight: "bold",
+                        }}
+                      >
                         First Name
                       </FormLabel>
                       <TextField
