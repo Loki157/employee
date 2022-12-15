@@ -4,6 +4,7 @@ import CardTitle2 from "./components/CardTitle2";
 import { useFormik } from "formik";
 import "../src/App.css";
 import teamwork from "./assets/teamwork.jpg";
+import work from "./assets/work.png";
 import { Grid } from "@mui/material";
 import { Box } from "@mui/system";
 import Scrollbars from "react-custom-scrollbars/lib/Scrollbars";
@@ -72,7 +73,7 @@ function App() {
         <div className="imageback">
           <div className="image">
             {" "}
-            <img src={login} />
+            <img src={work} />
           </div>
         </div>
         <div className="commonCard">

@@ -22,83 +22,85 @@ import RefreshIcon from "@mui/icons-material/Refresh";
 const Card2 = ({ formik }) => {
   return (
     <>
-      <FormControl sx={{ width: 200 }}>
-        <InputLabel id="demo-simple-select-label" sx={{ fontWeight: "bold" }}>
-          Passed Out Year
-        </InputLabel>
-        <Select
-          name="passOutYear"
-          id="demo-simple-select"
-          placeholder="Select Year"
-          value={formik.values.passOutYear}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-        >
-          <MenuItem value={"2022"}>2022</MenuItem>
-          <MenuItem value={"2021"}>2021</MenuItem>
-          <MenuItem value={"2020"}>2020</MenuItem>
-          <MenuItem value={"2019"}>2019</MenuItem>
-          <MenuItem value={"2018"}>2018</MenuItem>
-          <MenuItem value={"2017"}>2017</MenuItem>
-          <MenuItem value={"2016"}>2016</MenuItem>
-        </Select>
+      <Box display="flex" flexDirection="row">
+        <FormControl sx={{ width: 200 }}>
+          <InputLabel id="demo-simple-select-label" sx={{ fontWeight: "bold" }}>
+            Passed Out Year
+          </InputLabel>
+          <Select
+            name="passOutYear"
+            id="demo-simple-select"
+            placeholder="Select Year"
+            value={formik.values.passOutYear}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          >
+            <MenuItem value={"2022"}>2022</MenuItem>
+            <MenuItem value={"2021"}>2021</MenuItem>
+            <MenuItem value={"2020"}>2020</MenuItem>
+            <MenuItem value={"2019"}>2019</MenuItem>
+            <MenuItem value={"2018"}>2018</MenuItem>
+            <MenuItem value={"2017"}>2017</MenuItem>
+            <MenuItem value={"2016"}>2016</MenuItem>
+          </Select>
 
-        {formik.errors.passOutYear && formik.touched.passOutYear ? (
-          <Typography variant="p" sx={{ color: "crimson", fontSize: "15px" }}>
-            {formik.errors.passOutYear}
-          </Typography>
-        ) : null}
-      </FormControl>
-      <FormControl sx={{ width: 200 }}>
-        <InputLabel id="demo-simple-select-label" sx={{ fontWeight: "bold" }}>
-          Course
-        </InputLabel>
-        <Select
-          name="Course"
-          id="demo-simple-select"
-          placeholder="Select Course"
-          value={formik.values.Course}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-        >
-          <MenuItem value={"B.E"}>B.E</MenuItem>
-          <MenuItem value={"B.T"}>B.T</MenuItem>
-          <MenuItem value={"BCA"}>BCA</MenuItem>
-          <MenuItem value={"BSC"}>BSC</MenuItem>
-          <MenuItem value={"HSC"}>HSC</MenuItem>
-          <MenuItem value={"SSLC"}>SSLC</MenuItem>
-        </Select>
-        {formik.errors.Course && formik.touched.Course ? (
-          <Typography variant="p" sx={{ color: "crimson", fontSize: "15px" }}>
-            {formik.errors.Course}
-          </Typography>
-        ) : null}
-      </FormControl>
-      <FormControl>
-        <TextField
-          type="number"
-          name="percentage"
-          placeholder="Enter percentage (%)"
-          variant="standard"
-          value={formik.values.percentage}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-        />
-        {formik.errors.percentage && formik.touched.percentage ? (
-          <Typography variant="p" sx={{ color: "crimson", fontSize: "15px" }}>
-            {formik.errors.percentage}
-          </Typography>
-        ) : null}
-      </FormControl>
+          {formik.errors.passOutYear && formik.touched.passOutYear ? (
+            <Typography variant="p" sx={{ color: "crimson", fontSize: "15px" }}>
+              {formik.errors.passOutYear}
+            </Typography>
+          ) : null}
+        </FormControl>
+        <FormControl sx={{ width: 150 }}>
+          <InputLabel id="demo-simple-select-label" sx={{ fontWeight: "bold" }}>
+            Course
+          </InputLabel>
+          <Select
+            name="Course"
+            id="demo-simple-select"
+            placeholder="Select Course"
+            value={formik.values.Course}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          >
+            <MenuItem value={"B.E"}>B.E</MenuItem>
+            <MenuItem value={"B.T"}>B.T</MenuItem>
+            <MenuItem value={"BCA"}>BCA</MenuItem>
+            <MenuItem value={"BSC"}>BSC</MenuItem>
+            <MenuItem value={"HSC"}>HSC</MenuItem>
+            <MenuItem value={"SSLC"}>SSLC</MenuItem>
+          </Select>
+          {formik.errors.Course && formik.touched.Course ? (
+            <Typography variant="p" sx={{ color: "crimson", fontSize: "15px" }}>
+              {formik.errors.Course}
+            </Typography>
+          ) : null}
+        </FormControl>
+        <FormControl sx={{ width: 100 }}>
+          <TextField
+            type="number"
+            name="percentage"
+            placeholder="Enter percentage (%)"
+            variant="standard"
+            value={formik.values.percentage}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          {formik.errors.percentage && formik.touched.percentage ? (
+            <Typography variant="p" sx={{ color: "crimson", fontSize: "15px" }}>
+              {formik.errors.percentage}
+            </Typography>
+          ) : null}
+        </FormControl>
+      </Box>
     </>
   );
 };
 function CardTitle2({ formik, addCard2, addComponent }) {
   return (
-    <Container fixed>
-      <form onSubmit={formik.handleSubmit}>
-        <Box display="flex" flexDirection="column">
-          <Card sx={{ my: 2, height: 300, overflow: "auto" }}>
+    <form onSubmit={formik.handleSubmit}>
+      <Box>
+        <Container fixed>
+          <Card sx={{ padding: 3, my: 2, height: 300, overflow: "auto" }}>
             <Scrollbars>
               <h2>Education Details</h2>
 
@@ -106,9 +108,9 @@ function CardTitle2({ formik, addCard2, addComponent }) {
                 variant="contained"
                 size="small"
                 sx={{
-                  backgroundColor: "#f68f6d",
+                  "&:hover": { backgroundColor: "#471597" },
+                  backgroundColor: "#6727cc",
                   color: "white",
-                  "&:hover": { backgroundColor: "#e06b44" },
                 }}
                 onClick={addComponent}
               >
@@ -137,9 +139,9 @@ function CardTitle2({ formik, addCard2, addComponent }) {
                   type="submit"
                   sx={{
                     my: 2,
-                    backgroundColor: "#f68f6d",
+                    backgroundColor: "#6727cc",
                     color: "white",
-                    "&:hover": { backgroundColor: "#e06b44" },
+                    "&:hover": { backgroundColor: "#471597" },
                     //textAlign: "center",
                     padding: "10px",
                     width: "60%",
@@ -152,16 +154,25 @@ function CardTitle2({ formik, addCard2, addComponent }) {
                   Submit
                 </Button>
                 <Tooltip title="Reset">
-                  <Fab size="small" onClick={formik.handleReset}>
+                  <Fab
+                    sx={{
+                      my: 2,
+                      "&:hover": { backgroundColor: "#471597" },
+                      backgroundColor: "#6727cc",
+                      color: "white",
+                    }}
+                    size="small"
+                    onClick={formik.handleReset}
+                  >
                     <RefreshIcon />
                   </Fab>
                 </Tooltip>
               </Box>
             </Scrollbars>
           </Card>
-        </Box>
-      </form>
-    </Container>
+        </Container>
+      </Box>
+    </form>
   );
 }
 

@@ -37,7 +37,7 @@ function CardTitle1({ formik }) {
             <Container fixed>
               <Grid container>
                 <Grid item md={12}>
-                  <h2>Personal Details</h2>
+                  <h2 style={{ color: "#6727cc" }}>Personal Details</h2>
                 </Grid>
                 <Grid container md={12}>
                   <Grid item md={6} sx={{ my: 2 }}>
