@@ -120,7 +120,7 @@ const Card2 = ({ formik, removeInput }) => {
             type="number"
             name="percentage"
             placeholder="percentage (%)"
-            variant="standard"
+            variant="outlined"
             value={formik.values.percentage}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -191,7 +191,9 @@ function CardTitle2({
 
                 <Grid item sm={0.5}>
                   {displayClearButton ? (
-                    <FormControl sx={{ paddingLeft: 1 }}>
+                    <FormControl
+                    // sx={{ paddingLeft: 1 }}
+                    >
                       <Tooltip title="Clear" arrow placement="right">
                         <Fab
                           onClick={() => {

@@ -34,7 +34,6 @@ const CssTexField = styled(TextField)({
 });
 
 function CardTitle1({ formik }) {
-  const violetColor = ["#6727cc"];
   return (
     <>
       <Container fixed>
@@ -58,12 +57,14 @@ function CardTitle1({ formik }) {
             <p
               style={{
                 margin: 0,
+
                 padding: "10px",
                 textAlign: "center",
                 color: "#010c45",
                 fontFamily: "Gilroy Medium",
                 // backgroundColor: "#fe0073",
                 fontSize: "25px",
+                borderBottom: "2px solid #010c45",
               }}
             >
               Employee Register
@@ -73,6 +74,7 @@ function CardTitle1({ formik }) {
                 <Typography
                   variant="h5"
                   sx={{
+                    paddingY: 2,
                     fontFamily: "Gilroy Light",
                     fontWeight: "bold",
                     color: "#6727cc",
@@ -91,6 +93,7 @@ function CardTitle1({ formik }) {
                           fontFamily: "Gilroy Semibold",
                           fontSize: "17px",
                           //fontWeight: "bold",
+                          color: "#0c0908",
                         }}
                       >
                         First Name
@@ -119,6 +122,7 @@ function CardTitle1({ formik }) {
                         sx={{
                           fontFamily: "Gilroy Semibold",
                           fontSize: "17px",
+                          color: "#0c0908",
                           //fontWeight: "bold",
                         }}
                       >
@@ -147,8 +151,10 @@ function CardTitle1({ formik }) {
                     <FormLabel
                       id="demo-row-radio-buttons-group-label"
                       sx={{
+                        "&.Mui-Focused": { color: "#b987fa" },
                         fontFamily: "Gilroy Semibold",
                         fontSize: "17px",
+                        color: "#0c0908",
                         //fontWeight: "bold",
                       }}
                     >
@@ -157,7 +163,7 @@ function CardTitle1({ formik }) {
                     <RadioGroup
                       row
                       aria-labelledby="demo-row-radio-buttons-group-label"
-                      sx={{ "&.Mui-checked": { color: "#b987fa" } }}
+                      sx={{}}
                       name="radio"
                       value={formik.values.radio}
                       onChange={formik.handleChange}
@@ -165,17 +171,31 @@ function CardTitle1({ formik }) {
                     >
                       <FormControlLabel
                         value="female"
-                        control={<Radio />}
+                        control={
+                          <Radio
+                            sx={{ "&.Mui-checked": { color: "#b987fa" } }}
+                          />
+                        }
                         label="Female"
                       />
                       <FormControlLabel
                         value="male"
-                        control={<Radio />}
+                        control={
+                          <Radio
+                            sx={{ "&.Mui-checked": { color: "#b987fa" } }}
+                          />
+                        }
                         label="Male"
                       />
                       <FormControlLabel
                         value="other"
-                        control={<Radio />}
+                        control={
+                          <Radio
+                            sx={{
+                              "&.Mui-checked": { color: "#b987fa" },
+                            }}
+                          />
+                        }
                         label="Other"
                       />
                     </RadioGroup>
@@ -196,6 +216,7 @@ function CardTitle1({ formik }) {
                       sx={{
                         fontFamily: "Gilroy Semibold",
                         fontSize: "17px",
+                        color: "#0c0908",
                         //fontWeight: "bold",
                       }}
                     >
@@ -209,6 +230,11 @@ function CardTitle1({ formik }) {
                       value={formik.values.age}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
+                      // sx={{
+                      //   "& .MuiInput-underline:hover": {
+                      //     borderBottomColor: "green",
+                      //   },
+                      // }}
                     />
                     {formik.errors.age && formik.touched.age ? (
                       <Typography
