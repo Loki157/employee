@@ -1,0 +1,7 @@
+cardTitles ku- Gilroy Light btn oda color
+formLabels ku-Gilroy semibold color not yet chose
+placeholder ku- Gilroy thin no-color
+Textflied outline ku - background color
+radio click km bgcolor
+submit btton should change to add or else ,reduce size
+clear on onsubmit

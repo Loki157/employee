@@ -13,6 +13,7 @@ import {
   makeStyles,
   Grid,
   Fab,
+  FormLabel,
 } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
 import ClearIcon from "@mui/icons-material/Clear";
@@ -21,23 +22,51 @@ import AddIcon from "@mui/icons-material/Add";
 import Scrollbars from "react-custom-scrollbars/lib/Scrollbars";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import Card2List from "./Card2List";
-
+import DoneIcon from "@mui/icons-material/Done";
 const Card2 = ({ formik, removeInput }) => {
   return (
     <>
+      <Fab
+        variant="standard"
+        type="submit"
+        size="small"
+        sx={{
+          backgroundColor: "#6727cc",
+          color: "white",
+          "&:hover": { backgroundColor: "#471597" },
+          //textAlign: "center",
+          // padding: "10px",
+          // width: "60%",
+          // display: "flex",
+          // flexDirection: "column",
+          // alignItems: "center",
+          // justifyContent: "center",
+        }}
+      >
+        <DoneIcon />
+      </Fab>
       <Box display="flex" flexDirection="row">
         <FormControl sx={{ width: 200 }}>
-          <InputLabel id="demo-simple-select-label" sx={{ fontWeight: "bold" }}>
+          <FormLabel
+            id="demo-simple-select-label"
+            sx={{
+              fontFamily: "Gilroy Semibold",
+              fontSize: "17px",
+              //fontWeight: "bold",
+            }}
+          >
             Passed Out Year
-          </InputLabel>
+          </FormLabel>
           <Select
             name="passOutYear"
             id="demo-simple-select"
             placeholder="Select Year"
+            defaultValue="2022-16"
             value={formik.values.passOutYear}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           >
+            <MenuItem value={10}>2022-2016</MenuItem>
             <MenuItem value={"2022"}>2022</MenuItem>
             <MenuItem value={"2021"}>2021</MenuItem>
             <MenuItem value={"2020"}>2020</MenuItem>
@@ -54,17 +83,25 @@ const Card2 = ({ formik, removeInput }) => {
           ) : null}
         </FormControl>
         <FormControl sx={{ width: 150, paddingLeft: 1 }}>
-          <InputLabel id="demo-simple-select-label" sx={{ fontWeight: "bold" }}>
+          <FormLabel
+            id="demo-simple-select-label"
+            sx={{
+              fontFamily: "Gilroy Semibold",
+              fontSize: "17px",
+              //fontWeight: "bold",
+            }}
+          >
             Course
-          </InputLabel>
+          </FormLabel>
           <Select
             name="Course"
-            id="demo-simple-select"
-            placeholder="Select Course"
-            value={formik.values.Course}
+            value={20}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           >
+            <MenuItem disabled value={20}>
+              Select Course
+            </MenuItem>
             <MenuItem value={"B.E"}>B.E</MenuItem>
             <MenuItem value={"B.T"}>B.T</MenuItem>
             <MenuItem value={"BCA"}>BCA</MenuItem>
@@ -117,7 +154,16 @@ function CardTitle2({
             <Scrollbars>
               <Grid container sx={{ padding: 0 }}>
                 <Grid item sm={10}>
-                  <Typography variant="h5">Education Details</Typography>
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      color: "#6727cc",
+                      fontFamily: "Gilroy Light",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Education Details
+                  </Typography>
                 </Grid>
                 <Grid
                   item
@@ -177,7 +223,20 @@ function CardTitle2({
               ></Box>
               {addCard2 ? (
                 <Card2 formik={formik} removeInput={removeInput} />
-              ) : null}
+              ) : (
+                false
+              )}
+
+              <Box>
+                <Card2List
+                  getFormik={getFormik}
+                  removeTableRow={removeTableRow}
+                />
+                {/* <Card2Table
+                  getFormik={getFormik}
+                  removeTableRow={removeTableRow}
+                /> */}
+              </Box>
 
               <Box
                 display="flex"
@@ -194,7 +253,7 @@ function CardTitle2({
                     "&:hover": { backgroundColor: "#471597" },
                     //textAlign: "center",
                     padding: "10px",
-                    width: "60%",
+                    width: "90%",
                     // display: "flex",
                     // flexDirection: "column",
                     // alignItems: "center",
@@ -207,26 +266,17 @@ function CardTitle2({
                   <Fab
                     sx={{
                       my: 2,
+                      paddingX: 2,
                       "&:hover": { backgroundColor: "#471597" },
                       backgroundColor: "#6727cc",
                       color: "white",
                     }}
                     size="small"
-                    onClick={removeInput}
+                    onClick={formik.handleReset}
                   >
                     <RefreshIcon />
                   </Fab>
                 </Tooltip>
-              </Box>
-              <Box>
-                <Card2List
-                  getFormik={getFormik}
-                  removeTableRow={removeTableRow}
-                />
-                {/* <Card2Table
-                  getFormik={getFormik}
-                  removeTableRow={removeTableRow}
-                /> */}
               </Box>
             </Scrollbars>
           </Card>

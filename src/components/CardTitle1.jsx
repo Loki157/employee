@@ -21,8 +21,20 @@ import { useFormik } from "formik";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import "../Styles/CardTitle1.css";
 import { Box } from "@mui/system";
+import { alpha, styled } from "@mui/material/styles";
+const CssTexField = styled(TextField)({
+  "& .MuiOutlinedInput-root": {
+    "&:hover fieldset": {
+      borderColor: "#010c45;",
+    },
+    "&.Mui-focused fieldset": {
+      borderColor: "#b987fa;",
+    },
+  },
+});
 
 function CardTitle1({ formik }) {
+  const violetColor = ["#6727cc"];
   return (
     <>
       <Container fixed>
@@ -30,17 +42,25 @@ function CardTitle1({ formik }) {
           <Card
             sx={{
               my: 2,
-              height: "400px",
+              height: "500px",
               //backgroundColor: "#f2f2f2",
               //backgroundColor: "#afcb64",
             }}
           >
+            <AccountCircleIcon
+              sx={{
+                color: "#010c45",
+                paddingX: 35.5,
+                fontSize: 70,
+                // textAlign: "center",
+              }}
+            />
             <p
               style={{
                 margin: 0,
                 padding: "10px",
                 textAlign: "center",
-                color: "#6727cc",
+                color: "#010c45",
                 fontFamily: "Gilroy Medium",
                 // backgroundColor: "#fe0073",
                 fontSize: "25px",
@@ -48,19 +68,19 @@ function CardTitle1({ formik }) {
             >
               Employee Register
             </p>
-            <Grid item md={12}>
-              <Typography
-                variant="h5"
-                sx={{
-                  padding: 0,
-                  fontFamily: "Gilroy Light",
-                  fontWeight: "bold",
-                }}
-              >
-                Personal Details
-              </Typography>
-            </Grid>
             <Container fixed>
+              <Grid item md={12}>
+                <Typography
+                  variant="h5"
+                  sx={{
+                    fontFamily: "Gilroy Light",
+                    fontWeight: "bold",
+                    color: "#6727cc",
+                  }}
+                >
+                  Personal Details
+                </Typography>
+              </Grid>
               <Grid container>
                 <Grid container md={12}>
                   <Grid item md={6} sx={{ my: 2 }}>
@@ -68,13 +88,14 @@ function CardTitle1({ formik }) {
                       <FormLabel
                         id="Firstname"
                         sx={{
-                          fontFamily: "Gilroy ",
-                          fontWeight: "bold",
+                          fontFamily: "Gilroy Semibold",
+                          fontSize: "17px",
+                          //fontWeight: "bold",
                         }}
                       >
                         First Name
                       </FormLabel>
-                      <TextField
+                      <CssTexField
                         name="firstName"
                         value={formik.values.firstName}
                         onChange={formik.handleChange}
@@ -93,10 +114,17 @@ function CardTitle1({ formik }) {
                   </Grid>
                   <Grid item md={6} sx={{ my: 2 }}>
                     <FormControl>
-                      <FormLabel id="LastName" sx={{ fontWeight: "bold" }}>
+                      <FormLabel
+                        id="LastName"
+                        sx={{
+                          fontFamily: "Gilroy Semibold",
+                          fontSize: "17px",
+                          //fontWeight: "bold",
+                        }}
+                      >
                         Last Name
                       </FormLabel>
-                      <TextField
+                      <CssTexField
                         name="lastName"
                         placeholder="Enter Last Name"
                         value={formik.values.lastName}
@@ -118,13 +146,18 @@ function CardTitle1({ formik }) {
                   <FormControl>
                     <FormLabel
                       id="demo-row-radio-buttons-group-label"
-                      sx={{ fontWeight: "bold" }}
+                      sx={{
+                        fontFamily: "Gilroy Semibold",
+                        fontSize: "17px",
+                        //fontWeight: "bold",
+                      }}
                     >
                       Select Gender
                     </FormLabel>
                     <RadioGroup
                       row
                       aria-labelledby="demo-row-radio-buttons-group-label"
+                      sx={{ "&.Mui-checked": { color: "#b987fa" } }}
                       name="radio"
                       value={formik.values.radio}
                       onChange={formik.handleChange}
@@ -158,7 +191,14 @@ function CardTitle1({ formik }) {
                 </Grid>
                 <Grid item>
                   <FormControl>
-                    <FormLabel id="age" sx={{ fontWeight: "bold" }}>
+                    <FormLabel
+                      id="age"
+                      sx={{
+                        fontFamily: "Gilroy Semibold",
+                        fontSize: "17px",
+                        //fontWeight: "bold",
+                      }}
+                    >
                       {" "}
                       Age
                     </FormLabel>
