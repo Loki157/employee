@@ -41,7 +41,7 @@ function CardTitle1({ formik }) {
           <Card
             sx={{
               my: 2,
-              height: "500px",
+              height: "600px",
               //backgroundColor: "#f2f2f2",
               //backgroundColor: "#afcb64",
             }}

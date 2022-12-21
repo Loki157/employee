@@ -19,8 +19,10 @@ import login from "./assets/login.jpg";
 //   },
 // });
 function App() {
+  const [tabledata, settabledata] = React.useState([]);
   const [addCard2, setAddCard2] = React.useState(false);
   const [getFormik, setGetFormik] = React.useState([]);
+  const [getalert, setgetalert] = React.useState(false);
   function addComponent() {
     setAddCard2(true);
   }
@@ -28,9 +30,16 @@ function App() {
     //formik.handleReset();
     setAddCard2(false);
   }
-  function removeTableRow(index) {
-    const passData = getFormik;
-    passData.splice(index, 1);
+  function removeTableRow(idValue) {
+    console.log(idValue);
+    const passData = [...getFormik];
+    const index1 = getFormik.findIndex((item) => {
+      return item.id === idValue;
+    });
+    console.log("passData", passData, "index1", index1);
+    if (index1 >= 0) {
+      passData.splice(index1, 1);
+    }
     setGetFormik([...passData]);
   }
   const formik = useFormik({
@@ -47,18 +56,18 @@ function App() {
       firstName: yup
         .string()
         .max(20, "Maximum 20 Characters allowed")
-        .min(3, "Minimum 4 characters"),
-      // .required("FirstName is Must")
+        .min(3, "Minimum 4 characters")
+        .required("FirstName is Must"),
       lastName: yup
         .string()
         .max(20, "Maximum 20 Characters allowed")
-        .min(3, "Minimum 4 characters"),
-      // .required("Last Name Is Must"),
-      radio: yup.string(),
-      //   .required("Select Gender"),
-      age: yup.string().max(100, "Maximum 100 allowed"),
-
-      // .required("Must Enter Age"),
+        .min(3, "Minimum 4 characters")
+        .required("Last Name Is Must"),
+      radio: yup.string().required("Select Gender"),
+      age: yup
+        .number()
+        .max(3, "Maximum 100 allowed")
+        .required("Must Enter Age"),
       passOutYear: yup.string().required("Enter Passed Out Year"),
       Course: yup.string().required("Enter Course"),
       percentage: yup
@@ -68,14 +77,23 @@ function App() {
     }),
     onSubmit: (values) => {
       console.log("value", values);
-      formik.handleReset();
+      // formik.handleReset();
       setAddCard2(false);
-      getFormikValues(values);
+      // getFormikValues(values);
+      datacheck(values);
     },
   });
 
-  function getFormikValues(item) {
-    setGetFormik([...getFormik, item]);
+  function datacheck(values) {
+    const check = getFormik.findIndex((data) => data.Course === values.Course);
+    console.log("index", check, values);
+    if (check === -1) {
+      const idWithValue = { ...values, id: Date.now() };
+      setGetFormik([...getFormik, idWithValue]);
+      console.log("table", getFormik);
+    } else {
+      setgetalert(true);
+    }
   }
   //  const classes = useStyles();
   return (
@@ -93,12 +111,15 @@ function App() {
               <Box>
                 <CardTitle1 formik={formik} />
                 <CardTitle2
+                  datacheck={datacheck}
                   formik={formik}
                   addCard2={addCard2}
                   removeInput={removeInput}
                   addComponent={addComponent}
                   getFormik={getFormik}
                   removeTableRow={removeTableRow}
+                  setgetalert={setgetalert}
+                  getalert={getalert}
                 />
               </Box>
             </div>

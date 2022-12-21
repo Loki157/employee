@@ -38,7 +38,9 @@ function Card2Table({ getFormik, removeTableRow }) {
                       //textAlign: "center",
                     }}
                     size="small"
-                    onClick={removeTableRow}
+                    onClick={() => {
+                      removeTableRow(item.id);
+                    }}
                   >
                     <DeleteIcon />
                   </Fab>

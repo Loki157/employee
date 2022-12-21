@@ -15,6 +15,10 @@ import {
   Fab,
   FormLabel,
 } from "@mui/material";
+import Stack from "@mui/material/Stack";
+import { Grow } from "@mui/material";
+import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
 import Tooltip from "@mui/material/Tooltip";
 import ClearIcon from "@mui/icons-material/Clear";
 import Card2Table from "./Card2Table";
@@ -23,116 +27,162 @@ import Scrollbars from "react-custom-scrollbars/lib/Scrollbars";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import Card2List from "./Card2List";
 import DoneIcon from "@mui/icons-material/Done";
-const Card2 = ({ formik, removeInput }) => {
+
+const Card2 = ({
+  formik,
+  removeInput,
+  datacheck,
+  setgetalert,
+  getalert,
+  addCard2,
+  growSet,
+}) => {
   return (
     <>
-      <Fab
-        variant="standard"
-        type="submit"
-        size="small"
-        sx={{
-          backgroundColor: "#6727cc",
-          color: "white",
-          "&:hover": { backgroundColor: "#471597" },
-          //textAlign: "center",
-          // padding: "10px",
-          // width: "60%",
-          // display: "flex",
-          // flexDirection: "column",
-          // alignItems: "center",
-          // justifyContent: "center",
-        }}
-      >
-        <DoneIcon />
-      </Fab>
+      <Grow in={growSet}>
+        <Fab
+          variant="standard"
+          type="submit"
+          size="small"
+          sx={{
+            backgroundColor: "#6727cc",
+            color: "white",
+            "&:hover": { backgroundColor: "#471597" },
+            //textAlign: "center",
+            // padding: "10px",
+            // width: "60%",
+            // display: "flex",
+            // flexDirection: "column",
+            // alignItems: "center",
+            // justifyContent: "center",
+          }}
+        >
+          <DoneIcon />
+        </Fab>
+      </Grow>
       <Box display="flex" flexDirection="row">
-        <FormControl sx={{ width: 200 }}>
-          <FormLabel
-            id="demo-simple-select-label"
-            sx={{
-              fontFamily: "Gilroy Semibold",
-              fontSize: "17px",
-              //fontWeight: "bold",
-            }}
-          >
-            Passed Out Year
-          </FormLabel>
-          <Select
-            name="passOutYear"
-            id="demo-simple-select"
-            placeholder="Select Year"
-            defaultValue="2022-16"
-            value={formik.values.passOutYear}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          >
-            <MenuItem value={10}>2022-2016</MenuItem>
-            <MenuItem value={"2022"}>2022</MenuItem>
-            <MenuItem value={"2021"}>2021</MenuItem>
-            <MenuItem value={"2020"}>2020</MenuItem>
-            <MenuItem value={"2019"}>2019</MenuItem>
-            <MenuItem value={"2018"}>2018</MenuItem>
-            <MenuItem value={"2017"}>2017</MenuItem>
-            <MenuItem value={"2016"}>2016</MenuItem>
-          </Select>
+        <Grow in={growSet} {...(growSet ? { timeout: 500 } : {})}>
+          <FormControl sx={{ width: 200 }}>
+            <FormLabel
+              id="demo-simple-select-label"
+              sx={{
+                fontFamily: "Gilroy Semibold",
+                fontSize: "17px",
+                //fontWeight: "bold",
+              }}
+            >
+              Passed Out Year
+            </FormLabel>
+            <Select
+              name="passOutYear"
+              id="demo-simple-select"
+              placeholder="Select Year"
+              defaultValue="2022-16"
+              value={formik.values.passOutYear}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            >
+              <MenuItem value={10}>2022-2016</MenuItem>
+              <MenuItem value={"2022"}>2022</MenuItem>
+              <MenuItem value={"2021"}>2021</MenuItem>
+              <MenuItem value={"2020"}>2020</MenuItem>
+              <MenuItem value={"2019"}>2019</MenuItem>
+              <MenuItem value={"2018"}>2018</MenuItem>
+              <MenuItem value={"2017"}>2017</MenuItem>
+              <MenuItem value={"2016"}>2016</MenuItem>
+            </Select>
 
-          {formik.errors.passOutYear && formik.touched.passOutYear ? (
-            <Typography variant="p" sx={{ color: "crimson", fontSize: "15px" }}>
-              {formik.errors.passOutYear}
-            </Typography>
-          ) : null}
-        </FormControl>
-        <FormControl sx={{ width: 150, paddingLeft: 1 }}>
-          <FormLabel
-            id="demo-simple-select-label"
-            sx={{
-              fontFamily: "Gilroy Semibold",
-              fontSize: "17px",
-              //fontWeight: "bold",
+            {formik.errors.passOutYear && formik.touched.passOutYear ? (
+              <Typography
+                variant="p"
+                sx={{ color: "crimson", fontSize: "15px" }}
+              >
+                {formik.errors.passOutYear}
+              </Typography>
+            ) : null}
+          </FormControl>
+        </Grow>
+        <Grow in={growSet} {...(growSet ? { timeout: 750 } : {})}>
+          <FormControl sx={{ width: 150, paddingLeft: 1 }}>
+            <FormLabel
+              id="demo-simple-select-label"
+              sx={{
+                fontFamily: "Gilroy Semibold",
+                fontSize: "17px",
+                //fontWeight: "bold",
+              }}
+            >
+              Course
+            </FormLabel>
+            <Select
+              name="Course"
+              value={formik.values.Course}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            >
+              <MenuItem disabled value={20}>
+                Select Course
+              </MenuItem>
+              <MenuItem value={"B.E"}>B.E</MenuItem>
+              <MenuItem value={"B.T"}>B.T</MenuItem>
+              <MenuItem value={"BCA"}>BCA</MenuItem>
+              <MenuItem value={"BSC"}>BSC</MenuItem>
+              <MenuItem value={"HSC"}>HSC</MenuItem>
+              <MenuItem value={"SSLC"}>SSLC</MenuItem>
+            </Select>
+            {formik.errors.Course && formik.touched.Course ? (
+              <Typography
+                variant="p"
+                sx={{ color: "crimson", fontSize: "15px" }}
+              >
+                {formik.errors.Course}
+              </Typography>
+            ) : null}
+          </FormControl>
+        </Grow>
+        <Grow in={growSet} {...(growSet ? { timeout: 1000 } : {})}>
+          <FormControl sx={{ width: 200, paddingLeft: 1 }}>
+            <FormLabel
+              id="demo-simple-select-label"
+              sx={{
+                fontFamily: "Gilroy Semibold",
+                fontSize: "17px",
+                //fontWeight: "bold",
+              }}
+            >
+              &nbsp;
+            </FormLabel>
+            <TextField
+              type="number"
+              name="percentage"
+              placeholder="percentage (%)"
+              variant="outlined"
+              value={formik.values.percentage}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+            {formik.errors.percentage && formik.touched.percentage ? (
+              <Typography
+                variant="p"
+                sx={{ color: "crimson", fontSize: "15px" }}
+              >
+                {formik.errors.percentage}
+              </Typography>
+            ) : (
+              false
+            )}
+          </FormControl>
+        </Grow>
+        {/* <Stack spacing={2} sx={{ width: "100%" }}>
+          <Alert
+            onClose={() => {
+              setgetalert(false);
             }}
           >
-            Course
-          </FormLabel>
-          <Select
-            name="Course"
-            value={20}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          >
-            <MenuItem disabled value={20}>
-              Select Course
-            </MenuItem>
-            <MenuItem value={"B.E"}>B.E</MenuItem>
-            <MenuItem value={"B.T"}>B.T</MenuItem>
-            <MenuItem value={"BCA"}>BCA</MenuItem>
-            <MenuItem value={"BSC"}>BSC</MenuItem>
-            <MenuItem value={"HSC"}>HSC</MenuItem>
-            <MenuItem value={"SSLC"}>SSLC</MenuItem>
-          </Select>
-          {formik.errors.Course && formik.touched.Course ? (
-            <Typography variant="p" sx={{ color: "crimson", fontSize: "15px" }}>
-              {formik.errors.Course}
-            </Typography>
-          ) : null}
-        </FormControl>
-        <FormControl sx={{ width: 200, paddingLeft: 1 }}>
-          <TextField
-            type="number"
-            name="percentage"
-            placeholder="percentage (%)"
-            variant="outlined"
-            value={formik.values.percentage}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          />
-          {formik.errors.percentage && formik.touched.percentage ? (
-            <Typography variant="p" sx={{ color: "crimson", fontSize: "15px" }}>
-              {formik.errors.percentage}
-            </Typography>
-          ) : (
-            false
-          )}
-        </FormControl>
+            <AlertTitle>Error</AlertTitle>
+            This is a success alert — check it out!
+          </Alert>
+        </Stack> */}
       </Box>
     </>
   );
@@ -144,8 +194,14 @@ function CardTitle2({
   removeInput,
   getFormik,
   removeTableRow,
+  setgetalert,
+  getalert,
 }) {
   const [displayClearButton, setDisplayClearButton] = React.useState(false);
+  const [growSet, setGrowSet] = React.useState(false);
+  function handleChange() {
+    setGrowSet((get) => !get);
+  }
   return (
     <form onSubmit={formik.handleSubmit}>
       <Box>
@@ -182,6 +238,7 @@ function CardTitle2({
                       onClick={() => {
                         addComponent();
                         setDisplayClearButton(true);
+                        setGrowSet(true);
                       }}
                     >
                       <AddIcon />
@@ -191,27 +248,31 @@ function CardTitle2({
 
                 <Grid item sm={0.5}>
                   {displayClearButton ? (
-                    <FormControl
-                    // sx={{ paddingLeft: 1 }}
-                    >
-                      <Tooltip title="Clear" arrow placement="right">
-                        <Fab
-                          onClick={() => {
-                            removeInput();
-                            setDisplayClearButton(false);
-                          }}
-                          size="small"
-                          sx={{
-                            backgroundColor: "#6727cc",
-                            color: "white",
-                            "&:hover": { backgroundColor: "#471597" },
-                            //textAlign: "center",
-                          }}
-                        >
-                          <ClearIcon />
-                        </Fab>
-                      </Tooltip>
-                    </FormControl>
+                    <Grow in={growSet}>
+                      <FormControl
+                      // sx={{ paddingLeft: 1 }}
+                      >
+                        <Tooltip title="Clear" arrow placement="right">
+                          <Fab
+                            onClick={() => {
+                              removeInput();
+                              setDisplayClearButton(false);
+                              setGrowSet(false);
+                            }}
+                            onChange={handleChange}
+                            size="small"
+                            sx={{
+                              backgroundColor: "#6727cc",
+                              color: "white",
+                              "&:hover": { backgroundColor: "#471597" },
+                              //textAlign: "center",
+                            }}
+                          >
+                            <ClearIcon />
+                          </Fab>
+                        </Tooltip>
+                      </FormControl>
+                    </Grow>
                   ) : null}
                 </Grid>
               </Grid>
@@ -223,11 +284,30 @@ function CardTitle2({
                   justifyContent: "space-around",
                 }}
               ></Box>
+
               {addCard2 ? (
-                <Card2 formik={formik} removeInput={removeInput} />
+                <Card2
+                  formik={formik}
+                  removeInput={removeInput}
+                  growSet={growSet}
+                />
               ) : (
                 false
               )}
+
+              {getalert ? (
+                <Stack spacing={2} sx={{ width: "100%" }}>
+                  <Alert
+                    severity="error"
+                    onClose={() => {
+                      setgetalert(false);
+                    }}
+                  >
+                    <AlertTitle>Error</AlertTitle>
+                    Same Course Cannot be Entered
+                  </Alert>
+                </Stack>
+              ) : null}
 
               <Box>
                 <Card2List
